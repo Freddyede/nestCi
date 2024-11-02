@@ -31,7 +31,8 @@ describe('AppController', () => {
 
   describe('root', () => {
     it('should return "Hello World!"', () => {
-      expect(returnData.data.constructor === Array).toBeTruthy();
+      return expect(returnData.data.constructor === Array).toBeTruthy();
     });
   });
+  afterAll(() => setTimeout(() => process.exit(), 1000));
 });
