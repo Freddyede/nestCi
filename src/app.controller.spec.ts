@@ -6,7 +6,7 @@ import { UserEntity } from './user.entity';
 
 describe('AppController', () => {
   let appController: AppController;
-
+  let returnData: any;
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       imports: [
@@ -26,13 +26,12 @@ describe('AppController', () => {
       providers: [AppService],
     }).compile();
     appController = app.get<AppController>(AppController);
+    returnData = await appController.getHello();
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', async () => {
-      expect(
-        (await appController.getHello()).data.constructor === Array,
-      ).toBeTruthy();
+    it('should return "Hello World!"', () => {
+      expect(returnData.data.constructor === Array).toBeTruthy();
     });
   });
 });
