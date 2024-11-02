@@ -28,6 +28,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+        env:
+          # Set the DJANGO_SECRET_KEY in the GitHub repo settings:
+          # Go to Secrets and variables > Actions > New repository secret
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+          DATABASE_NAME: test
+          DATABASE_USERNAME: root
+          DATABASE_PASSWORD: root
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
+      - run: echo "Finished"
