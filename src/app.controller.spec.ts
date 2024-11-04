@@ -34,5 +34,4 @@ describe('AppController', () => {
       return expect(returnData.data.constructor === Array).toBeTruthy();
     });
   });
-  afterAll(() => setTimeout(() => process.exit(), 1000));
 });
